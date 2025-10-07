@@ -39,7 +39,8 @@
       justify-content:center;       
       transition: background 0.3s, color 0.3s;       
     }
-    [data-theme="light"] body{
+    [data-theme="light"] 
+    body{
       background:linear-gradient(180deg,#f8f9fa 0%, #e9ecef 100%);       
     }
     .container{width:100%;max-width:1100px}
@@ -88,13 +89,14 @@
     [data-theme="light"] .tag{background:rgba(0,0,0,0.05)}
     .projects{display:grid;       grid-template-columns:repeat(2,1fr);       gap:14px;       margin-top:16px}
     .project{padding:12px;       border-radius:12px;       background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));       border:1px solid rgba(255,255,255,0.02)}
-    [data-theme="light"] .project{background:rgba(0,0,0,0.03);       border:1px solid rgba(0,0,0,0.06)}
+    [data-theme="light"] 
+    .project{background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.06)}
     .project h3{margin:0 0 6px 0;       font-size:1rem}
     .project p{margin:0;       color:var(--muted);       font-size:0.9rem}
     .project .links{margin-top:10px;       display:flex;       gap:8px}
     aside{position:relative}
     .profile{display:flex;       flex-direction:column;       gap:12px}
-    .profile h2{margin:0}
+    .profile h2{margin:0; color:black;}
     .skills{display:flex;       flex-wrap:wrap;       gap:8px;       margin-top:8px}
     .skill{background:rgba(255,255,255,0.03);       padding:8px 10px;       border-radius:8px;       font-size:0.85rem;       color:var(--muted)}
     [data-theme="light"] .skill{background:rgba(0,0,0,0.05)}
@@ -121,7 +123,7 @@
   <div class="container">
     <header>
       <div class="brand">
-        <div class="avatar"><img src="george.jpeg" alt="George Habashi" width="140px"></div>
+        <div class="avatar"><img src="george.jpeg" alt="George Habashi" width="140px" style="border-radius:12px"></div>
         <div>
           <h1>George Habashi</h1>
           <p class="lead">Computer Science student • Passionate about embedded systems & mechanical design</p>
@@ -139,6 +141,7 @@
       <section> 
         <div class="card hero"> 
           <div class="meta"> 
+            <br><br><br><br>
             <h2>Hi — I'm George.</h2> 
             <p class="lead">I build full-stack web apps, experiment with computer vision in Python, and love designing mechanical systems. 
               I'm currently studying Computer Science and looking for internships that let me bridge software and hardware.</p> 
