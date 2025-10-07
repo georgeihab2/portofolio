@@ -5,75 +5,123 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>George Habashi — Portfolio</title>
   <meta name="description" content="Portfolio of George Habashi — Computer Science student. Projects, skills, contact." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <link rel="icon" href="data:;
+    base64,iVBORw0KGgo=" />
   <style>
     :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
+      --bg:#0f1724;       
+      --card:#0b1220;       
+      --muted:#94a3b8;       
+      --accent:#7c3aed;       
+      --glass: rgba(255,255,255,0.04);       
+      --radius:14px;       
     }
     [data-theme="light"]{
-      --bg:#f8f9fa;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#7c3aed;
-      --glass: rgba(0,0,0,0.04);
-      color:#021025;
+      --bg:#f8f9fa;       
+      --card:#ffffff;       
+      --muted:#4b5563;       
+      --accent:#7c3aed;       
+      --glass: rgba(0,0,0,0.08);       
+      color:#1f2937;       
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;font-family:Inter,ui-sans-serif,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      background:linear-gradient(180deg,#071225 0%, #071a2a 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      padding:32px;display:flex;align-items:center;justify-content:center;
-      transition: background 0.3s, color 0.3s;
+      margin:0;       font-family:Inter,ui-sans-serif,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;       
+      background:
+      linear-gradient(180deg,#071225 0%, #071a2a 100%);       
+      color:#e6eef8;       
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;       
+      padding:32px;
+      display:flex;
+      align-items:center;
+      justify-content:center;       
+      transition: background 0.3s, color 0.3s;       
+    }
+    [data-theme="light"] body{
+      background:linear-gradient(180deg,#f8f9fa 0%, #e9ecef 100%);       
     }
     .container{width:100%;max-width:1100px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    header{display:flex;]align-items:center;justify-content:space-between;margin-bottom:28px}
     .brand{display:flex;gap:16px;align-items:center}
-    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021025}
-    h1{font-size:1.6rem;margin:0}
-    p.lead{margin:4px 0 0;color:var(--muted)}
-    .controls{display:flex;gap:10px;align-items:center}
-    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:inherit;text-decoration:none;font-size:0.95rem;cursor:pointer}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#021025;border:none}
-    main{display:grid;grid-template-columns:1fr 360px;gap:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);transition: background 0.3s, border 0.3s}
-    .hero{display:flex;gap:18px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;
+            background:linear-gradient(135deg,var(--accent),#06b6d4);       
+            display:flex;       
+            align-items:center;       
+            justify-content:center;       
+            font-weight:700;       font-size:24px;       
+            color:#021025}
+    h1{font-size:1.6rem;       margin:0}
+    p.lead{margin:4px 0 0;       color:var(--muted)}
+    .controls{display:flex;       gap:10px;       align-items:center;       flex-wrap:wrap}
+    .btn{background:var(--glass);       
+         border:1px solid rgba(255,255,255,0.04);       
+         padding:8px 12px;       border-radius:10px;       color:inherit;       
+         text-decoration:none;       font-size:0.95rem;       cursor:pointer;       
+         transition:opacity 0.2s}
+    [data-theme="light"] 
+    .btn{
+      background:rgba(0,0,0,0.06);       
+      border:1px solid rgba(0,0,0,0.1);       
+      color:#1f2937;       
+    }
+    .btn.primary{
+      background:
+      linear-gradient(90deg,var(--accent),#06b6d4);       
+      color:#021025;       border:none;       
+      font-weight:500}
+    main{display:grid;       grid-template-columns:1fr 360px;       gap:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));       padding:20px;       
+          border-radius:var(--radius);       box-shadow:0 6px 30px rgba(2,6,23,0.6);       
+          border:1px solid rgba(255,255,255,0.03);       
+          transition: background 0.3s, border 0.3s}
+    [data-theme="light"] .card{
+      background:var(--card);       
+      box-shadow:0 2px 12px rgba(0,0,0,0.08);       
+      border:1px solid rgba(0,0,0,0.06);       
+    }
+    .hero{display:flex;       gap:18px;       align-items:center}
     .hero .meta{flex:1}
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-    .tag{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:0.8rem;color:var(--muted)}
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
-    .project{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));border:1px solid rgba(255,255,255,0.02)}
-    .project h3{margin:0 0 6px 0;font-size:1rem}
-    .project p{margin:0;color:var(--muted);font-size:0.9rem}
-    .project .links{margin-top:10px;display:flex;gap:8px}
+    .tags{display:flex;       gap:8px;       flex-wrap:wrap;       margin-top:12px}
+    .tag{background:rgba(255,255,255,0.03);       padding:6px 10px;       border-radius:999px;       font-size:0.8rem;       color:var(--muted)}
+    [data-theme="light"] .tag{background:rgba(0,0,0,0.05)}
+    .projects{display:grid;       grid-template-columns:repeat(2,1fr);       gap:14px;       margin-top:16px}
+    .project{padding:12px;       border-radius:12px;       background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));       border:1px solid rgba(255,255,255,0.02)}
+    [data-theme="light"] .project{background:rgba(0,0,0,0.03);       border:1px solid rgba(0,0,0,0.06)}
+    .project h3{margin:0 0 6px 0;       font-size:1rem}
+    .project p{margin:0;       color:var(--muted);       font-size:0.9rem}
+    .project .links{margin-top:10px;       display:flex;       gap:8px}
     aside{position:relative}
-    .profile{display:flex;flex-direction:column;gap:12px}
+    .profile{display:flex;       flex-direction:column;       gap:12px}
     .profile h2{margin:0}
-    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;font-size:0.85rem;color:var(--muted)}
-    .contact-form{display:flex;flex-direction:column;gap:8px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.05);padding:10px;border-radius:8px;color:inherit}
-    textarea{min-height:110px;resize:vertical}
-    .socials{display:flex;gap:8px;margin-top:8px}
-    footer{margin-top:18px;color:var(--muted);font-size:0.85rem;text-align:center}
-    @media (max-width:980px){main{grid-template-columns:1fr} .projects{grid-template-columns:1fr} aside{order:-1}}
-    .accent-line{height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#06b6d4);margin-top:12px}
-    a:hover{opacity:0.92}
-    a:focus,input:focus,button:focus{outline:3px solid rgba(124,58,237,0.18);outline-offset:2px}
+    .skills{display:flex;       flex-wrap:wrap;       gap:8px;       margin-top:8px}
+    .skill{background:rgba(255,255,255,0.03);       padding:8px 10px;       border-radius:8px;       font-size:0.85rem;       color:var(--muted)}
+    [data-theme="light"] .skill{background:rgba(0,0,0,0.05)}
+    .contact-form{display:flex;       flex-direction:column;       gap:8px}
+    input,textarea{background:transparent;       border:1px solid rgba(255,255,255,0.05);       padding:10px;       border-radius:8px;       color:inherit;       font-family:inherit}
+    [data-theme="light"] input,[data-theme="light"] textarea{border:1px solid rgba(0,0,0,0.1)}
+    textarea{min-height:110px;       resize:vertical}
+    .socials{display:flex;       gap:8px;       margin-top:8px;       flex-wrap:wrap}
+    footer{margin-top:18px;       color:var(--muted);       font-size:0.85rem;       text-align:center}
+    @media (max-width:980px){
+      main{grid-template-columns:1fr} 
+      .projects{grid-template-columns:1fr} 
+      aside{order:-1}
+      .controls{justify-content:flex-start}
+      header{flex-direction:column;       align-items:flex-start;       gap:16px}
+    }
+    .accent-line{height:4px;       border-radius:999px;       background:linear-gradient(90deg,var(--accent),#06b6d4);       margin-top:12px}
+    a:hover,.btn:hover{opacity:0.85}
+    a:focus,input:focus,button:focus{outline:3px solid rgba(124,58,237,0.18);
+                                     outline-offset:2px}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <div class="avatar"><img src="george.jpeg" alt="George Habashi" width="150px" style="border-radius:12px"></div>
+        <div class="avatar"><img src="george.jpeg" alt="George Habashi" width="140px"></div>
         <div>
           <h1>George Habashi</h1>
           <p class="lead">Computer Science student • Passionate about embedded systems & mechanical design</p>
@@ -82,101 +130,116 @@
       <div class="controls">
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#contact">Contact</a>
-        <a class="btn primary" href="George_Habashi_Resume.pdf" id="resumeLink">Download Résumé</a>
-        <!-- Dark/Light toggle button -->
-        <button class="btn" id="themeToggle">🌙</button>
+        <a class="btn primary" href="mailto:GeorgeIhab2@gmail.com?subject=Resume%20Request">Request Résumé</a>
+        <button class="btn" id="themeToggle">Dark</button>
       </div>
     </header>
 
     <main>
-<section> 
-  <div class="card hero"> 
-    <div class="meta"> 
-      <h2>Hi — I'm George.</h2> 
-    <p class="lead">I build full-stack web apps, experiment with computer vision in Python, and love designing mechanical systems. 
-      I'm currently studying Computer Science and looking for internships that let me bridge software and hardware.</p> 
-    <div class="tags"> 
-      <span class="tag">JavaScript</span> 
-      <span class="tag">Python</span> 
-      <span class="tag">MySQL</span> 
-      <span class="tag">Embedded Systems</span> 
-      <span class="tag">Mechanical Design</span> 
-    </div> <div class="accent-line"></div> 
-    <h3 style="margin-top:16px">Featured Projects</h3> 
-      <div class="projects" id="projects"> 
-        <article class="project"> 
-      <h3>Suspension Model — Adjustable</h3> 
-          <p>A simple mechanical adjustable suspension simulator with interactive parameters and visualization.</p> 
-      <div class="links"> 
-        <a class="btn" href="#">Live</a> 
-        <a class="btn" href="#">Code</a> 
-      </div> 
-        </article> 
-        <article class="project"> 
-        <h3>Quiz Management System</h3> 
-          <p>PHP/MySQL app for lesson quizzes with role-based access and secure password hashing.</p> 
-        <div class="links"> 
-          <a class="btn" href="#">Live</a> 
-          <a class="btn" href="#">Code</a> 
-        </div> </article> 
-        <article class="project"> 
-          <h3>Computer Vision Demos</h3> 
-          <p>OpenCV projects in Python showcasing object detection and lane detection for autonomous driving experiments.</p> 
-          <div class="links"> 
-            <a class="btn" href="#">Demo</a> 
-            <a class="btn" href="#">Repo</a> 
-          </div> </article> <article class="project"> 
-            <h3>Sunday School Admin Site</h3> 
-            <p>Full PHP site with PDF uploads, JSON question editors, and grade-specific access control.</p> 
-            <div class="links"> <a class="btn" href="#">Preview</a> <a class="btn" href="#">Code</a> 
+      <section> 
+        <div class="card hero"> 
+          <div class="meta"> 
+            <h2>Hi — I'm George.</h2> 
+            <p class="lead">I build full-stack web apps, experiment with computer vision in Python, and love designing mechanical systems. 
+              I'm currently studying Computer Science and looking for internships that let me bridge software and hardware.</p> 
+            <div class="tags"> 
+              <span class="tag">JavaScript</span> 
+              <span class="tag">Python</span> 
+              <span class="tag">MySQL</span> 
+              <span class="tag">Embedded Systems</span> 
+              <span class="tag">Mechanical Design</span> 
             </div> 
-          </article> 
-      </div> 
-    </div> 
-  </div> 
-  <div class="card" style="margin-top:18px"> <h3>Selected Experience</h3> 
-    <ul style="margin:10px 0 0 18px;color:var(--muted)"> 
-    <li>Undergraduate Computer Science — expected Dec 2025</li> 
-    <li>Projects: Database systems, Web apps (PHP/MySQL), Computer Vision</li> 
-    <li>Tools: VS Code, Git, XAMPP, OpenCV, MySQL</li> 
-  </ul> 
-  </div> 
-</section> 
+            <div class="accent-line"></div> 
+            <h3 style="margin-top:16px">Featured Projects</h3> 
+            <div class="projects" id="projects"> 
+              <article class="project"> 
+                <h3>Suspension Model — Adjustable</h3> 
+                <p>A simple mechanical adjustable suspension simulator with interactive parameters and visualization.</p> 
+                <div class="links"> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Live</a> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Code</a> 
+                </div> 
+              </article> 
+              <article class="project"> 
+                <h3>Quiz Management System</h3> 
+                <p>PHP/MySQL app for lesson quizzes with role-based access and secure password hashing.</p> 
+                <div class="links"> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Live</a> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Code</a> 
+                </div> 
+              </article> 
+              <article class="project"> 
+                <h3>Computer Vision Demos</h3> 
+                <p>OpenCV projects in Python showcasing object detection and lane detection for autonomous driving experiments.</p> 
+                <div class="links"> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Demo</a> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Repo</a> 
+                </div> 
+              </article> 
+              <article class="project"> 
+                <h3>Sunday School Admin Site</h3> 
+                <p>Full PHP site with PDF uploads, JSON question editors, and grade-specific access control.</p> 
+                <div class="links"> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Preview</a> 
+                  <a class="btn" href="https://georgeihab2.github.io/portofolio/">Code</a> 
+                </div> 
+              </article> 
+            </div> 
+          </div> 
+        </div> 
+        <div class="card" style="margin-top:18px"> 
+          <h3>Selected Experience</h3> 
+          <ul style="margin:10px 0 0 18px;
+            color:var(--muted)"> 
+            <li>Undergraduate Computer Science — expected Dec 2025</li> 
+            <li>Projects: Database systems, Web apps (PHP/MySQL), Computer Vision</li> 
+            <li>Tools: VS Code, Git, XAMPP, OpenCV, MySQL</li> 
+          </ul> 
+        </div> 
+      </section> 
+      
       <aside> 
         <div class="card profile"> 
-      <h2>About</h2> 
-      <p style="margin:0;color:var(--muted)">I'm George — I enjoy turning ideas into working systems that combine code and hardware. 
-        I specialize in backend & database design, PHP apps, and prototyping mechanical concepts.</p> 
+          <h2>About</h2> 
+          <p style="margin:0;
+            color:var(--muted)">I'm George — I enjoy turning ideas into working systems that combine code and hardware. 
+            I specialize in backend & database design, PHP apps, and prototyping mechanical concepts.</p> 
           <h3 style="margin-top:12px">Skills</h3> 
-      <div class="skills"> 
-        <span class="skill">PHP</span> <span class="skill">MySQL</span> 
-        <span class="skill">JavaScript</span> 
-        <span class="skill">Python</span> 
-        <span class="skill">OpenCV</span> 
-        <span class="skill">HTML/CSS</span> 
-        <span class="skill">Mechanical CAD</span> 
-      </div> 
-      <h3 style="margin-top:12px">Contact</h3> 
-      <div class="socials"> 
-        <a class="btn" href="https://georgeihab2.github.io/portofolio/">GitHub</a> 
-        <a class="btn" href="https://linkedin.com/in/george-habashi">LinkedIn</a> 
-        <a class="btn" href="mailto:GeorgeIhab2@gmail.com">Email</a> 
-      </div> <div style="margin-top:12px"> 
-        <h4 style="margin:0">Quick Contact</h4> 
-        <form id="contact" class="contact-form" onsubmit="handleContact(event)"> 
-          <input id="name" placeholder="Your name" required /> 
-          <input id="email" placeholder="Your email" type="email" required /> 
-          <textarea id="message" placeholder="Message..." required></textarea> 
-          <button class="btn primary" type="submit">Send — opens email</button> 
-        </form> 
-      </div> 
-    </div> 
-      <div class="card" style="margin-top:14px;text-align:center"> 
-          <p style="margin:0 0 8px 0;color:var(--muted)">Download my résumé or get the source</p> 
-        <a class="btn" href="George_Habashi_Resume.pdf">Résumé (PDF)</a> 
-        <div style="margin-top:12px;color:var(--muted);font-size:0.9rem">© George Habashi • Built with HTML/CSS</div> 
-      </div> 
-    </aside>
+          <div class="skills"> 
+            <span class="skill">PHP</span> 
+            <span class="skill">MySQL</span> 
+            <span class="skill">JavaScript</span> 
+            <span class="skill">Python</span> 
+            <span class="skill">OpenCV</span> 
+            <span class="skill">HTML/CSS</span> 
+            <span class="skill">Mechanical CAD</span> 
+          </div> 
+          <h3 style="margin-top:12px">Contact</h3> 
+          <div class="socials"> 
+            <a class="btn" href="https://georgeihab2.github.io/portofolio/">GitHub</a> 
+            <a class="btn" href="https://linkedin.com/in/george-habashi">LinkedIn</a> 
+            <a class="btn" href="mailto:GeorgeIhab2@gmail.com">Email</a> 
+          </div> 
+          <div style="margin-top:12px"> 
+            <h4 style="margin:0">Quick Contact</h4> 
+            <form id="contact" class="contact-form" onsubmit="handleContact(event)"> 
+              <input id="name" placeholder="Your name" required /> 
+              <input id="email" placeholder="Your email" type="email" required /> 
+              <textarea id="message" placeholder="Message..." required></textarea> 
+              <button class="btn primary" type="submit">Send — opens email</button> 
+            </form> 
+          </div> 
+        </div> 
+        <div class="card" style="margin-top:14px;
+          text-align:center"> 
+          <p style="margin:0 0 8px 0;
+            color:var(--muted)">Download my résumé or get the source</p> 
+          <a class="btn" href="mailto:GeorgeIhab2@gmail.com?subject=Resume%20Request">Request Résumé</a> 
+          <div style="margin-top:12px;
+            color:var(--muted);
+            font-size:0.9rem">© George Habashi • Built with HTML/CSS</div> 
+        </div> 
+      </aside>
     </main>
 
     <footer>
@@ -185,34 +248,27 @@
   </div>
   <script>
     function handleContact(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      const subject = encodeURIComponent('Portfolio contact from ' + name);
-      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = `mailto:GeorgeIhab2@gmail.com?subject=${subject}&body=${body}`;
+      e.preventDefault();       
+      const name = document.getElementById('name').value;       
+      const email = document.getElementById('email').value;       
+      const message = document.getElementById('message').value;       
+      const subject = encodeURIComponent('Portfolio contact from ' + name);       
+      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');       
+      window.location.href = `mailto:GeorgeIhab2@gmail.com?subject=${subject}&body=${body}`;       
     }
 
-    // Dark/Light Mode Toggle with Persistence
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme');
-    if(currentTheme === 'light'){
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '🌞';
-    }
-
+    // Dark/Light Mode Toggle (in-memory only, no localStorage)
+    const themeToggle = document.getElementById('themeToggle');       
+    
     themeToggle.addEventListener('click', () => {
       if(document.documentElement.hasAttribute('data-theme')){
-        document.documentElement.removeAttribute('data-theme');
-        themeToggle.textContent = '🌙';
-        localStorage.removeItem('theme');
+        document.documentElement.removeAttribute('data-theme');       
+        themeToggle.textContent = 'Dark';       
       } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeToggle.textContent = '🌞';
-        localStorage.setItem('theme','light');
+        document.documentElement.setAttribute('data-theme', 'light');       
+        themeToggle.textContent = 'Light';       
       }
-    });
+    });       
   </script>
 </body>
 </html>
