@@ -7,6 +7,46 @@
   <meta name="description" content="Portfolio of George Habashi — Computer Science student. Projects, skills, contact." />
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=" />
   <style>
+    .accordion-item {
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] .accordion-item {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+.accordion-header:hover {
+  opacity: 0.8;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+  padding: 0 16px;
+  color: var(--muted);
+}
+
+.accordion-body.open {
+  padding: 12px 16px 16px 16px;
+}
+
     :root {
       --bg: #0f1724;
       --card: #0b1220;
@@ -252,6 +292,67 @@
         </div>
 
         <div class="card" style="margin-top:18px">
+  <h3>Certificates</h3>
+
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-header">NVIDIA — Secure & Trustworthy LLMs</button>
+      <div class="accordion-body">
+        <p>Issued Dec 2025 — Credential ID: 5b42826b…f45</p>
+        <p>Skills: Large Language Models, Responsible AI, NVIDIA NeMo Guardrails</p>
+        <a class="btn" href="CertificateOfCompletion_Building Secure and Trustworthy LLMs Using NVIDIA Guardrails.pdf">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">C++ Programming Professional Certificate</button>
+      <div class="accordion-body">
+        <p>Issued Dec 2025 — Credential ID: bb84c87e…25d</p>
+        <p>Skills: Advanced C++ Development, Templates, Lambdas, Best Practices</p>
+        <a class="btn" href="CertificateOfCompletion_C Development Advanced Concepts Lambda Expressions and Best Practices.pdf">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Generative AI (HTML, CSS) — LinkedIn Learning</button>
+      <div class="accordion-body">
+        <p>Issued Dec 2025 — Credential ID: eeeec2a6…be10</p>
+        <p>Skills: Front-End Development, Generative AI for Web Developers</p>
+        <a class="btn" href="CertificateOfCompletion_HTML CSS and Generative AI Speed Up Your Process.pdf">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Python Essential Training — LinkedIn</button>
+      <div class="accordion-body">
+        <p>Issued Dec 2025 — Credential ID: ecb73c6d…a2a</p>
+        <p>Skills: Python Programming</p>
+        <a class="btn" href="Certificate Of Completion.pdf">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">NVIDIA — Transformer-Based NLP</button>
+      <div class="accordion-body">
+        <p>Issued Nov 2025 — Credential ID: pF329a7-SwSyOeTLS-WONQ</p>
+        <a class="btn" href="NVIDIA Certificate Of Competency.pdf">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">UX Research, Wireframes & Foundations — Coursera</button>
+      <div class="accordion-body">
+        <p>Issued 2022 — IDs: T7LM2DNG45FJ, X6M5RTHH3BSC, etc.</p>
+        <p>Skills: UX Design, Research, Prototyping, Project Management</p>
+        <!-- Optionally add certificate links -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <div class="card" style="margin-top:18px">
           <h3>Selected Experience</h3>
           <ul style="margin:10px 0 0 18px; color:var(--muted)">
             <li>Undergraduate Computer Science — expected Dec 2025</li>
@@ -331,6 +432,24 @@
         themeToggle.textContent = 'Light';
       }
     });
+  document.querySelectorAll('.accordion-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+
+      document.querySelectorAll('.accordion-body').forEach(b => {
+        b.style.maxHeight = null;
+        b.classList.remove('open');
+      });
+
+      if (!isOpen) {
+        body.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + "px";
+      }
+    });
+  });
+
+
   </script>
 </body>
 </html>
