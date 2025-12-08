@@ -1,758 +1,826 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>George Habashi — Portfolio</title>
-  <meta name="description" content="Portfolio of George Habashi — Computer Science student. Projects, skills, contact." />
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgo=" />
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-      --accent: #7c3aed;
-      --accent-light: #a78bfa;
-      --border: #e2e8f0;
-      --hover: #f1f5f9;
-      --radius: 12px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
-    }
-
-    * { 
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container { 
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    /* Header */
-    header {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .avatar {
-      flex-shrink: 0;
-    }
-
-    .avatar img {
-      width: 80px;
-      height: 80px;
-      border-radius: var(--radius);
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: var(--shadow);
-    }
-
-    .header-text h1 {
-      font-size: 2rem;
-      color: var(--text);
-      margin-bottom: 4px;
-      font-weight: 700;
-    }
-
-    .header-text .tagline {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .header-nav {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn:hover {
-      background: var(--hover);
-      border-color: var(--accent-light);
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-light);
-      border-color: var(--accent-light);
-    }
-
-    /* Main Layout */
-    main {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    /* Card */
-    .card {
-      background: var(--card);
-      padding: 28px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-      margin-bottom: 24px;
-    }
-
-    .card h2 {
-      font-size: 1.5rem;
-      color: var(--text);
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      color: var(--text);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .card h4 {
-      font-size: 1.1rem;
-      color: var(--text);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    /* About Section */
-    .about-text {
-      color: var(--muted);
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .tag {
-      background: #ede9fe;
-      color: var(--accent);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .project {
-      padding: 20px;
-      border-radius: var(--radius);
-      background: var(--hover);
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-    }
-
-    .project:hover {
-      box-shadow: var(--shadow);
-      border-color: var(--accent-light);
-      transform: translateY(-2px);
-    }
-
-    .project h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 8px;
-    }
-
-    .project-links .btn {
-      padding: 8px 16px;
-      font-size: 0.85rem;
-    }
-
-    /* Resume Section */
-    .resume-section {
-      margin-bottom: 24px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .resume-section:last-child {
-      border-bottom: none;
-    }
-
-    .resume-section h3 {
-      color: var(--accent);
-      margin-bottom: 12px;
-      font-size: 1.15rem;
-    }
-
-    .resume-section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .resume-section li {
-      padding: 6px 0;
-      padding-left: 20px;
-      position: relative;
-      color: var(--muted);
-    }
-
-    .resume-section li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    .resume-downloads {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Accordion */
-    .accordion-item {
-      margin-bottom: 12px;
-      border-radius: var(--radius);
-      background: var(--card);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }
-
-    .accordion-item:hover {
-      box-shadow: var(--shadow);
-    }
-
-    .accordion-header {
-      width: 100%;
-      text-align: left;
-      padding: 16px 20px;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.2s ease;
-    }
-
-    .accordion-header:hover {
-      background: var(--hover);
-    }
-
-    .accordion-header::after {
-      content: "▼";
-      font-size: 0.75rem;
-      color: var(--muted);
-      transition: transform 0.2s ease;
-    }
-
-    .accordion-header.active::after {
-      transform: rotate(180deg);
-    }
-
-    .accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .accordion-content {
-      padding: 0 20px 16px 20px;
-      color: var(--muted);
-    }
-
-    .accordion-content p {
-      margin: 8px 0;
-      font-size: 0.95rem;
-    }
-
-    /* Sidebar */
-    .sidebar .card {
-      padding: 24px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .skill {
-      background: #ede9fe;
-      color: var(--accent);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* Contact Form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: var(--card);
-      color: var(--text);
-      transition: border-color 0.2s ease;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding: 24px;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        order: -1;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 16px;
-      }
-
-      header {
-        padding: 24px;
-      }
-
-      .header-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .header-text h1 {
-        font-size: 1.75rem;
-      }
-
-      .header-nav {
-        justify-content: center;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      .resume-downloads {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-text h1 {
-        font-size: 1.5rem;
-      }
-
-      .header-text .tagline {
-        font-size: 0.95rem;
-      }
-
-      .avatar img {
-        width: 64px;
-        height: 64px;
-      }
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>George Habashi — Portfolio</title>
+    <meta name="description"
+        content=" Portfolio of George Habashi — Computer Science student specializing in embedded systems, full-stack development, and AI/ML." />
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --border: #e2e8f0;
+            --hover: #f1f5f9;
+            --radius: 12px;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        header {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius);
+            border: 3px solid var(--accent);
+        }
+
+        .header-text h1 {
+            font-size: 2rem;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .header-text .tagline {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--hover);
+            border-color: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .about-text {
+            color: var(--muted);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background: #ede9fe;
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat {
+            background: var(--hover);
+            padding: 16px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .project {
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--hover);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .project:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .project h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .project-meta {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-links .btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        .experience-item {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--card);
+            box-shadow: 0 0 0 2px var(--accent-light);
+        }
+
+        .experience-header {
+            margin-bottom: 8px;
+        }
+
+        .experience-company {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 2px 0;
+        }
+
+        .experience-date {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .experience-location {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .experience-item li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .experience-item li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .resume-section {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .resume-section:last-child {
+            border-bottom: none;
+        }
+
+        .resume-section h3 {
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .resume-section ul {
+            list-style: none;
+        }
+
+        .resume-section li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: var(--muted);
+        }
+
+        .resume-section li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .resume-downloads {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .accordion-item {
+            margin-bottom: 12px;
+            border-radius: var(--radius);
+            background: var(--card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background: var(--hover);
+        }
+
+        .accordion-header::after {
+            content: "▼";
+            font-size: 0.75rem;
+            color: var(--muted);
+            transition: transform 0.2s ease;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content {
+            padding: 0 20px 16px 20px;
+            color: var(--muted);
+        }
+
+        .accordion-content p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .skill {
+            background: #ede9fe;
+            color: var(--accent);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: var(--card);
+            color: var(--text);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            header {
+                padding: 24px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .resume-downloads {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <div class="header-content">
-        <div class="avatar">
-          <img src="george.jpeg" alt="George Habashi">
-        </div>
-        <div class="header-text">
-          <h1>George Habashi</h1>
-          <p class="tagline">Computer Science Student • Passionate about Embedded Systems & Mechanical Design</p>
-        </div>
-      </div>
-      <nav class="header-nav">
-        <a class="btn" href="#about">About</a>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#resume">Resume</a>
-        <a class="btn" href="#certificates">Certificates</a>
-        <a class="btn" href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <section>
-        <!-- About -->
-        <div class="card" id="about">
-          <h2>About Me</h2>
-          <p class="about-text">
-            Hi — I'm George. I build full-stack web apps, experiment with computer vision in Python, and love designing mechanical systems. I'm currently studying Computer Science at the University of Houston and looking for internships that let me bridge software and hardware.
-          </p>
-          <div class="tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Python</span>
-            <span class="tag">PHP</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Mechanical Design</span>
-          </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="card" id="projects">
-          <h2>Featured Projects</h2>
-          <div class="projects">
-            <article class="project">
-              <h3>Sunday School Portal System</h3>
-              <p>PHP/MySQL online portal for Sunday school lesson quizzes with role-based access, grade-specific lessons, videos, and quizzes.</p>
-              <div class="project-links">
-                <a class="btn btn-primary" href="http://aar-sds.atwebpages.com/index.php" target="_blank">Open</a>
-                <a class="btn" href="mailto:Georgeihab2@gmail.com?subject=AAR Website Access Request">Request Access</a>
-              </div>
-            </article>
-
-            <article class="project">
-              <h3>Computer Vision Demos</h3>
-              <p>OpenCV projects in Python showcasing object detection and lane detection for autonomous driving experiments.</p>
-              <div class="project-links">
-                <a class="btn btn-primary" href="https://georgeihab2.github.io/portofolio/" target="_blank">Demo</a>
-                <a class="btn" href="https://georgeihab2.github.io/portofolio/" target="_blank">Repo</a>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <!-- Resume -->
-        <div class="card" id="resume">
-          <h2>Resume</h2>
-          
-          <div class="resume-section">
-            <h3>Summary</h3>
-            <p class="about-text">
-              Passionate about combining software engineering with hardware systems, embedded technologies, and automotive diagnostics. Currently pursuing a B.S. in Computer Science with expected graduation in December 2025.
-            </p>
-          </div>
-
-          <div class="resume-section">
-            <h3>Education</h3>
-            <ul>
-              <li><strong>B.S. in Computer Science</strong> — University of Houston (Expected: Dec 2025)</li>
-              <li>Capstone: Software Senior Sequence</li>
-            </ul>
-          </div>
-
-          <div class="resume-section">
-            <h3>Technical Skills</h3>
-            <ul>
-              <li><strong>Programming:</strong> Python, Java, PHP, C++, SQL</li>
-              <li><strong>Web Development:</strong> HTML, CSS, JavaScript, MySQL, PHP</li>
-              <li><strong>Embedded Systems:</strong> Arduino, CANbus basics</li>
-              <li><strong>Computer Vision:</strong> OpenCV, Object Detection</li>
-              <li><strong>Automotive:</strong> Telemetry, Diagnostics, EV Systems</li>
-              <li><strong>Tools:</strong> Git, VS Code, XAMPP, MySQL Workbench</li>
-            </ul>
-          </div>
-
-          <div class="resume-section">
-            <h3>Experience & Projects</h3>
-            <ul>
-              <li><strong>Full-Stack Web Development</strong> — Database systems, PHP/MySQL applications, quiz engines, API integrations</li>
-              <li><strong>Computer Vision Projects</strong> — Object detection, lane detection for autonomous driving using Python and OpenCV</li>
-              <li><strong>Automotive Projects</strong> — Electric vehicle hobby work, data logging, embedded controllers</li>
-              <li><strong>Mechanical Design</strong> — CAD modeling and prototyping for hardware integration</li>
-            </ul>
-          </div>
-
-          <div class="resume-downloads">
-            <a class="btn btn-primary" href="George_Habashi_CS_Resume.pdf" download>Download PDF Resume</a>
-            <a class="btn" href="George_Habashi_Resume.docx" download>Download DOCX Resume</a>
-          </div>
-        </div>
-
-        <!-- Certificates -->
-        <div class="card" id="certificates">
-          <h2>Certificates & Credentials</h2>
-          
-          <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-header">NVIDIA — Secure & Trustworthy LLMs</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> December 2025</p>
-                  <p><strong>Credential ID:</strong> 5b42826b…f45</p>
-                  <p><strong>Skills:</strong> Large Language Models, Responsible AI, NVIDIA NeMo Guardrails</p>
-                  <a class="btn btn-primary" href="CertificateOfCompletion_Building Secure and Trustworthy LLMs Using NVIDIA Guardrails.pdf" target="_blank">View Certificate</a>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="avatar"><img src="george.jpeg" alt="George Habashi"></div>
+                <div class="header-text">
+                    <h1>George I. Habashi</h1>
+                    <p class="tagline">Computer Science Student • Embedded Systems & Full-Stack Development</p>
                 </div>
-              </div>
             </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">C++ Programming Professional Certificate</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> December 2025</p>
-                  <p><strong>Credential ID:</strong> bb84c87e…25d</p>
-                  <p><strong>Skills:</strong> Advanced C++ Development, Templates, Lambdas, Best Practices</p>
-                  <a class="btn btn-primary" href="CertificateOfCompletion_C Development Advanced Concepts Lambda Expressions and Best Practices.pdf" target="_blank">View Certificate</a>
+            <nav class="header-nav"><a class="btn" href="#about">About</a><a class="btn"
+                    href="#experience">Experience</a><a class="btn" href="#projects">Projects</a><a class="btn"
+                    href="#resume">Resume</a><a class="btn" href="#certificates">Certificates</a><a class="btn"
+                    href="#contact">Contact</a></nav>
+        </header>
+        <main>
+            <section>
+                <div class="card" id="about">
+                    <h2>About Me</h2>
+                    <p class="about-text">I'm an entry-level software and systems engineering candidate with experience
+                        spanning embedded systems, full-stack web development, and AI/ML fundamentals. I bring hands-on
+                        skills in C++, Python, Java, Kotlin, PHP, and SQL, along with practical exposure to
+                        hardware-software integration through CubeSat development and university-level research.
+                    </p>
+                    <div class="tags"><span class="tag">C++</span><span class="tag">Python</span><span
+                            class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span
+                            class="tag">MySQL</span><span class="tag">Embedded Systems</span><span
+                            class="tag">AI/ML</span></div>
                 </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">Generative AI (HTML, CSS) — LinkedIn Learning</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> December 2025</p>
-                  <p><strong>Credential ID:</strong> eeeec2a6…be10</p>
-                  <p><strong>Skills:</strong> Front-End Development, Generative AI for Web Developers</p>
-                  <a class="btn btn-primary" href="CertificateOfCompletion_HTML CSS and Generative AI Speed Up Your Process.pdf" target="_blank">View Certificate</a>
+                <div class="card" id="experience">
+                    <h2>Professional Experience</h2>
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-company">University of Houston</div>
+                            <div class="experience-title">Undergraduate Research Assistant</div>
+                            <div class="experience-location">Human Behavior Modeling Lab • Houston,
+                                TX</div>
+                            <div class="experience-date">August 2025 – Present</div>
+                        </div>
+                        <ul>
+                            <li>Undergraduate-research (Modeling human conversational behavior using Motion-capture)</li>
+                            <li>Analyzed multimodal motion datasets to support real-time next-speaker prediction
+                                algorithm development</li>
+                            <li>Contributed to preprocessing and organizing large motion-capture datasets</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-company">Archangel Raphael Church</div>
+                            <div class="experience-title">Full-Stack Web Developer</div>
+                            <div class="experience-date">June 2025 – Present</div>
+                        </div>
+                        <ul>
+                            <li>Developed role-based online portal for Sunday school using PHP,
+                                MySQL,
+                                HTML,
+                                CSS,
+                                and JavaScript</li>
+                            <li>Created secure user-authentication workflows for different user groups</li>
+                            <li>Integrated database-driven lesson management system</li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-company">Egyptian Space Agency</div>
+                            <div class="experience-title">Software Intern</div>
+                            <div class="experience-location">CubeSat-I Program • Cairo,
+                                Egypt</div>
+                            <div class="experience-date">Fall 2022</div>
+                        </div>
+                        <ul>
+                            <li>Supported software design of CubeSat systems for weather-balloon deployment</li>
+                            <li>Developed Python and C++code for data-acquisition workflows</li>
+                            <li>Implemented magnetorquer control algorithms for attitude stabilization</li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">Python Essential Training — LinkedIn</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> December 2025</p>
-                  <p><strong>Credential ID:</strong> ecb73c6d…a2a</p>
-                  <p><strong>Skills:</strong> Python Programming</p>
-                  <a class="btn btn-primary" href="Certificate Of Completion.pdf" target="_blank">View Certificate</a>
+                <div class="card" id="projects">
+                    <h2>Featured Projects</h2>
+                    <div class="projects">
+                        <article class="project">
+                            <div class="project-meta">Current • Web Development</div>
+                            <h3>Sunday School Portal</h3>
+                            <p>PHP/MySQL portal with role-based access,
+                                lessons,
+                                videos,
+                                and quizzes. Features secure authentication and database-driven content management.</p>
+                            <div class="project-links">
+                                <a class="btn btn-primary" href="http://aar-sds.atwebpages.com/index.php" target="_blank" rel="noopener noreferrer">View Live</a>
+                            </div>
+                        </article>
+                        <article class="project">
+                            <div class="project-meta">Fall 2023 • AI/ML Research</div>
+                            <h3>QuantaMedics</h3>
+                            <p>Quantum CNN models using TensorFlow to classify fMRI brain scans for autism detection,
+                                achieving over 90% accuracy.</p>
+                        </article>
+                        <article class="project">
+                            <div class="project-meta">Summer 2022 • Mobile</div>
+                            <h3>Diet Trak Android App</h3>
+                            <p>Health-tracking app using Kotlin,
+                                Java,
+                                and Firebase with secure authentication and real-time data handling.</p>
+                        </article>
+                        <article class="project">
+                            <div class="project-meta">Personal • Computer Vision</div>
+                            <h3>Undergraduate-research (modeling and predicting human conversational behavior with motion-capture)</h3>
+                            <p>Analyzed multimodal motion datasets to support the development of a real-time
+                                next-speaker prediction algorithm. </p>
+                            <p>Contributed to preprocessing,
+                                labeling,
+                                and organizing large motion-capture datasets used in conversation-behavior modeling.
+                            </p>
+                            <p>Supported the design and evaluation of algorithmic approaches for recognizing interaction
+                                cues in multiparty conversations.</p>
+                            <p>Conducted exploratory data analysis to identify patterns in gesture,
+                                movement,
+                                and conversational dynamics.</p>
+                        </article>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">NVIDIA — Transformer-Based NLP</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> November 2025</p>
-                  <p><strong>Credential ID:</strong> pF329a7-SwSyOeTLS-WONQ</p>
-                  <p><strong>Skills:</strong> Natural Language Processing, Transformers, Deep Learning</p>
-                  <a class="btn btn-primary" href="NVIDIA Certificate Of Competency.pdf" target="_blank">View Certificate</a>
+                <div class="card" id="resume">
+                    <h2>Resume</h2>
+                    <div class="resume-section">
+                        <h3>Education</h3>
+                        <ul>
+                            <li>B.S. in Computer Science — University of Houston (Expected: December 2025)</li>
+                            <li>Capstone: Software Engineering Senior Sequence</li>
+                        </ul>
+                    </div>
+                    <div class="resume-section">
+                        <h3>Technical Skills</h3>
+                        <ul>
+                            <li>Programming: C++,
+                                C,
+                                Java,
+                                Python,
+                                JavaScript,
+                                Kotlin,
+                                PHP,
+                                SQL</li>
+                            <li>Tools: Android SDK,
+                                Firebase,
+                                Git,
+                                Arduino,
+                                Linux,
+                                VS Code</li>
+                            <li>Strengths: Embedded Systems,
+                                Full-Stack Web,
+                                AI/ML,
+                                Data Acquisition</li>
+                        </ul>
+                    </div>
+                    <div class="resume-downloads"><a class="btn btn-primary" href="George_Habashi_CS_Resume.pdf"
+                            download>Download PDF</a><a class="btn" href="George_Habashi_Resume.docx" download>Download
+                            DOCX</a></div>
                 </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">UX Research, Wireframes & Foundations — Coursera</button>
-              <div class="accordion-body">
-                <div class="accordion-content">
-                  <p><strong>Issued:</strong> 2022</p>
-                  <p><strong>Credential IDs:</strong> T7LM2DNG45FJ, X6M5RTHH3BSC</p>
-                  <p><strong>Skills:</strong> UX Design, Research, Prototyping, Project Management</p>
+                <div class="card" id="certificates">
+                    <h2>Certificates & Credentials</h2>
+                    <div class="accordion">
+                        <div class="accordion-item"><button class="accordion-header">NVIDIA — Secure & Trustworthy
+                                LLMs</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>December 2025</p>
+                                    <p><strong>Credential ID:</strong>5b42826b…f45</p>
+                                    <p><strong>Skills:</strong>Large Language Models,
+                                        Responsible AI,
+                                        NVIDIA NeMo Guardrails</p><a class="btn btn-primary"
+                                        href="CertificateOfCompletion_Building Secure and Trustworthy LLMs Using NVIDIA Guardrails.pdf"
+                                        target="_blank" rel="noopener noreferrer">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item"><button class="accordion-header">C++Programming Professional
+                                Certificate</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>December 2025</p>
+                                    <p><strong>Credential ID:</strong>bb84c87e…25d</p>
+                                    <p><strong>Skills:</strong>Advanced C++Development,
+                                        Templates,
+                                        Lambdas,
+                                        Best Practices</p><a class="btn btn-primary"
+                                        href="CertificateOfCompletion_C Development Advanced Concepts Lambda Expressions and Best Practices.pdf"
+                                        target="_blank" rel="noopener noreferrer">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item"><button class="accordion-header">Generative AI (HTML, CSS) —
+                                LinkedIn Learning</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>December 2025</p>
+                                    <p><strong>Credential ID:</strong>eeeec2a6…be10</p>
+                                    <p><strong>Skills:</strong>Front-End Development,
+                                        Generative AI for Web Developers</p><a class="btn btn-primary"
+                                        href="CertificateOfCompletion_HTML CSS and Generative AI Speed Up Your Process.pdf"
+                                        target="_blank" rel="noopener noreferrer">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item"><button class="accordion-header">Python Essential Training —
+                                LinkedIn</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>December 2025</p>
+                                    <p><strong>Credential ID:</strong>ecb73c6d…a2a</p>
+                                    <p><strong>Skills:</strong>Python Programming</p><a class="btn btn-primary"
+                                        href="Certificate Of Completion.pdf" target="_blank" rel="noopener noreferrer">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item"><button class="accordion-header">NVIDIA — Transformer-Based
+                                NLP</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>November 2025</p>
+                                    <p><strong>Credential ID:</strong>pF329a7-SwSyOeTLS-WONQ</p>
+                                    <p><strong>Skills:</strong>Natural Language Processing,
+                                        Transformers,
+                                        Deep Learning</p><a class="btn btn-primary"
+                                        href="NVIDIA Certificate Of Competency.pdf" target="_blank" rel="noopener noreferrer">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item"><button class="accordion-header">UX Research,
+                                Wireframes & Foundations — Coursera</button>
+                            <div class="accordion-body">
+                                <div class="accordion-content">
+                                    <p><strong>Issued:</strong>2022</p>
+                                    <p><strong>Credential IDs:</strong>T7LM2DNG45FJ,
+                                        X6M5RTHH3BSC</p>
+                                    <p><strong>Skills:</strong>UX Design,
+                                        Research,
+                                        Prototyping,
+                                        Project Management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
+            <aside class="sidebar">
+                <div class="card">
+                    <h3>Quick Info</h3>
+                    <p class="about-text" style="font-size: 0.95rem;">CS student at University of Houston with
+                        experience in embedded systems,
+                        full-stack development,
+                        and AI/ML research. </p>
+                    <h3 style="margin-top: 20px;">Core Skills</h3>
+                    <div class="skills"><span class="skill">C++</span><span class="skill">Python</span><span
+                            class="skill">Java</span><span class="skill">PHP</span><span class="skill">MySQL</span><span
+                            class="skill">Arduino</span><span class="skill">Firebase</span><span
+                            class="skill">TensorFlow</span></div>
+                    <h3 style="margin-top: 20px;">Connect</h3>
+                    <div class="socials"><a class="btn" href="https://linkedin.com/in/george-habashi"
+                            target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="btn" href="mailto:GeorgeIhab2@gmail.com">Email</a>
+                    </div>
+                </div>
+                <div class="card" id="contact">
+                    <h3>Get In Touch</h3>
+                    <form class="contact-form" onsubmit="handleContact(event)"><input id="name" placeholder="Your name"
+                            required /><input id="email" placeholder="Your email" type="email" required /><textarea
+                            id="message" placeholder="Your message..." required></textarea><button
+                            class="btn btn-primary" type="submit">Send Message</button></form>
+                </div>
+            </aside>
+        </main>
+        <footer>
+            <p>© 2025 George I. Habashi • Computer Science @ University of Houston</p>
+        </footer>
+    </div>
+    <script>function handleContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const subject = encodeURIComponent('Portfolio contact from ' + name);
+            const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+            window.location.href = 'mailto:GeorgeIhab2@gmail.com?subject=' + subject + '&body=' + body;
+        }
 
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="card">
-          <h3>Quick Info</h3>
-          <p class="about-text" style="font-size: 0.95rem;">
-            I enjoy turning ideas into working systems that combine code and hardware. I specialize in backend & database design, PHP apps, and prototyping mechanical concepts.
-          </p>
+        document.querySelectorAll('.accordion-header').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const body = btn.nextElementSibling;
+                const isOpen = btn.classList.contains('active');
 
-          <h4 style="margin-top: 20px;">Core Skills</h4>
-          <div class="skills">
-            <span class="skill">PHP</span>
-            <span class="skill">MySQL</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">Python</span>
-            <span class="skill">OpenCV</span>
-            <span class="skill">C++</span>
-            <span class="skill">HTML/CSS</span>
-            <span class="skill">CAD</span>
-          </div>
+                document.querySelectorAll('.accordion-header').forEach(b => {
+                    b.classList.remove('active');
+                    b.nextElementSibling.style.maxHeight = null;
+                });
 
-          <h4 style="margin-top: 20px;">Connect</h4>
-          <div class="socials">
-            <a class="btn" href="https://georgeihab2.github.io/portofolio/" target="_blank">GitHub</a>
-            <a class="btn" href="https://linkedin.com/in/george-habashi" target="_blank">LinkedIn</a>
-            <a class="btn" href="mailto:GeorgeIhab2@gmail.com">Email</a>
-          </div>
-        </div>
-
-        <div class="card" id="contact">
-          <h3>Get In Touch</h3>
-          <form class="contact-form" onsubmit="handleContact(event)">
-            <input id="name" placeholder="Your name" required />
-            <input id="email" placeholder="Your email" type="email" required />
-            <textarea id="message" placeholder="Your message..." required></textarea>
-            <button class="btn btn-primary" type="submit">Send Message</button>
-          </form>
-        </div>
-      </aside>
-    </main>
-
-    <footer>
-      <p>© 2025 George Habashi • Built with HTML/CSS • Hosted at georgeihab2.github.io/portofolio/</p>
-    </footer>
-  </div>
-
-  <script>
-    // Contact form handler
-    function handleContact(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      const subject = encodeURIComponent('Portfolio contact from ' + name);
-      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = `mailto:GeorgeIhab2@gmail.com?subject=${subject}&body=${body}`;
-    }
-
-    // Accordion functionality
-    document.querySelectorAll('.accordion-header').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const body = btn.nextElementSibling;
-        const isOpen = btn.classList.contains('active');
-
-        // Close all accordions
-        document.querySelectorAll('.accordion-header').forEach(b => {
-          b.classList.remove('active');
-          b.nextElementSibling.style.maxHeight = null;
+                if (!isOpen) {
+                    btn.classList.add('active');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                }
+            });
         });
 
-        // Open clicked accordion if it was closed
-        if (!isOpen) {
-          btn.classList.add('active');
-          body.style.maxHeight = body.scrollHeight + "px";
-        }
-      });
-    });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  </script>
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth', block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
